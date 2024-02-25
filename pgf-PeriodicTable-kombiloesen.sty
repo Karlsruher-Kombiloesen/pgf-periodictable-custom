@@ -205,10 +205,21 @@ only cells=false,only cells plus Z=false,only cells with periods and group numbe
 only cells with periods and group numbers plus Z=false,back color scheme,back color,%
 Z exercise list,exercise list in capitals,exercise list color,exercise list font,%
 d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT precision%
-% KOMBILÖSEN
-,Z backopacity, Z fontopacity, Z yshift factor, CS radio shift x, CS radio shift y, Lan label color, Act label color,%
 }%
 \tikzset{/pgfPerTable/.cd,legend box,legend pins,extra legend,background}%
+%%% KOMBILÖSEN
+\tikzset{/pgfPerTable/.cd,%
+Z backopacity,%
+Z fontopacity,%
+Z shift x,%
+Z shift y,%
+legend scale,
+CS radio shift x,%
+CS radio shift y,%
+Lan label color,%
+Act label color,%
+}%
+%%%
 }%
 % END !! \pgfPTresetstyle
 %
@@ -326,14 +337,14 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \ifdim\pgfPT@data@Z@natwd>\pgfPT@data@Z@wd\relax%
                     \pgfmathparse{\pgfPT@data@Z@wd-2*\pgfPTZspace-.3333em}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                     \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
-                        at (xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}}\hspace{\pgfPTZspace}\vfil}};%
+                        at ([xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}}\hspace{\pgfPTZspace}\vfil}};%
                 \else%
                     \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
-                        at ([yshift=-2]xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}\hspace{\pgfPTZspace}\vfil}};%
+                        at ([xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}\hspace{\pgfPTZspace}\vfil}};%
                 \fi%
             \else\let\pgfPT@printnum\relax%
                 \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
-                    at (xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{57--71}\hspace{\pgfPTZspace}\vfil}};%
+                    at ([xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{57--71}\hspace{\pgfPTZspace}\vfil}};%
             \fi%
             }%
             \else{%
@@ -345,7 +356,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                     \pgfPTZfont\pgfPTnumberfont\pgfmathparse{width("\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                 \fi%
                 \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
-                at (xLa) {%
+                at ([xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]xLa) {%
                     \ifpgfPT@zhnumbers@Z%
                         \ifnum\@pgfPT@resizebox=1\relax%
                         \vbox to\pgfPT@data@Z@ht{\vfil\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}}\vfil}%
@@ -397,14 +408,14 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \ifdim\pgfPT@data@Z@natwd>\pgfPT@data@Z@wd\relax%
                     \pgfmathparse{\pgfPT@data@Z@wd-2*\pgfPTZspace-.3333em}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                     \node[\kkZBoxOptions,fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
-                        at (xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}}\hspace{\pgfPTZspace}\vfil}};%
+                        at ([xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}}\hspace{\pgfPTZspace}\vfil}};%
                 \else%
                     \node[\kkZBoxOptions,fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
-                        at (xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}\hspace{\pgfPTZspace}\vfil}};%
+                        at ([xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}\hspace{\pgfPTZspace}\vfil}};%
                 \fi%
             \else\let\pgfPT@printnum\relax%
                 \node[\kkZBoxOptions,fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
-                    at (xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{89--103}\hspace{\pgfPTZspace}\vfil}};%
+                    at ([xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{89--103}\hspace{\pgfPTZspace}\vfil}};%
             \fi%
             }%
             \else{%
@@ -416,7 +427,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                     \pgfPTZfont\pgfPTnumberfont\pgfmathparse{width("\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                 \fi%
                 \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
-                at (xAc) {%
+                at ([xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]xAc) {%
                     \ifpgfPT@zhnumbers@Z%
                         \ifnum\@pgfPT@resizebox=1\relax%
                         \vbox to\pgfPT@data@Z@ht{\vfil\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}}\vfil}%
@@ -511,7 +522,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \pgfPTZfont\pgfPTnumberfont\pgfmathparse{width("\pgfPT@printnum{\Z}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
             \fi%
             \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
-            at ([xshift=\pgfPT@data@Z@x+.5*\@pgfPT@Zxshift,yshift=-\pgfPT@data@Z@y-\pgfPTZyshiftfactor*\@pgfPT@Zyshift]\Z) {%
+            at ([xshift=\pgfPT@data@Z@x+\pgfPTZshiftX,yshift=-\pgfPT@data@Z@y+\pgfPTZshiftY]\Z) {%
                     \ifpgfPT@zhnumbers@Z%
                         \ifnum\@pgfPT@resizebox=1\relax%
                         \vbox to\pgfPT@data@Z@ht{\vfil\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{\Z}}\vfil}%
@@ -1276,13 +1287,16 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
 \fi%
 % legend -->
 \ifpgfPTlegenda%
+%%% KOMBILOESEN wrap in node for scaling
+\node[scale=\pgfPTlegendScale] at ([yshift=-0.2*\pgfPTcellht,xshift=0.5*\pgfPTcellwd]0) (L) {\tikz{%
+%%%
 \pgfPT@countb=0\relax\@for\pgfPT@tmp:=\pgfPTlanguages\do{\advance\pgfPT@countb by 1\relax}%
 \ifpgfPTlegacro% use acronyms ##############################################
 \draw[fill=\pgfPTlegendbackcolor,draw=\pgfPTcelllinecolor,line width=\pgfPTcelllinewd] (0) rectangle ++(\pgfPTcellwd,-\pgfPTcellht);
     % append the Z box
     \ifpgfPT@Z%
         \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,below right,inner sep=1.5pt] (LZ)%
-            at ([xshift=\pgfPT@data@Z@x,yshift=-\pgfPT@data@Z@y,xshift=\pgfPTlegendZshiftX,yshift=\pgfPTlegendZshiftY]0) {Z};%
+            at ([xshift=\pgfPT@data@Z@x,yshift=-\pgfPT@data@Z@y,xshift=\pgfPTZshiftX,yshift=\pgfPTZshiftY]0) {Z};%
     \fi%
     % the Chemical Symbol
     \ifpgfPT@CS%
@@ -2467,6 +2481,10 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
     \fi%
     \global\pgfPT@dima=0pt\relax%
 \fi\fi% end legend
+%%% KOMBILOESEN Close node for scaling
+}};
+%%%
+
 % End of Legend and title
 % MNM line (Metal Non Metal line)
 % get the limits of Z

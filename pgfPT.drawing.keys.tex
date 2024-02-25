@@ -1625,15 +1625,15 @@ Z backopacity/.default=0,%
 Z fontopacity/.get=\pgfPTZfontopacity,%
 Z fontopacity/.store in=\pgfPTZfontopacity,%
 Z fontopacity/.default=1,%
-Z yshift factor/.get=\pgfPTZyshiftfactor,%
-Z yshift factor/.store in=\pgfPTZyshiftfactor,%
-Z yshift factor/.default=0.5,%
-legend Z shift x/.get=\pgfPTlegendZshiftX,%
-legend Z shift x/.store in=\pgfPTlegendZshiftX,%
-legend Z shift x/.default=0,%
-legend Z shift y/.get=\pgfPTlegendZshiftY,%
-legend Z shift y/.store in=\pgfPTlegendZshiftY,%
-legend Z shift y/.default=0,%
+Z shift x/.get=\pgfPTZshiftX,%
+Z shift x/.store in=\pgfPTZshiftX,%
+Z shift x/.default=0.5,%
+Z shift y/.get=\pgfPTZshiftY,%
+Z shift y/.store in=\pgfPTZshiftY,%
+Z shift y/.default=-0.5,%
+legend scale/.get=\pgfPTlegendScale,%
+legend scale/.store in=\pgfPTlegendScale,%
+legend scale/.default=1,%
 CS radio shift x/.get=\pgfPTradioshiftX,%
 CS radio shift x/.store in=\pgfPTradioshiftX,%
 CS radio shift x/.default=0,%
@@ -1650,9 +1650,9 @@ Act label color/.default=cpgfPTTMP,%
 \pgfkeys{/pgfPerTable/.cd,%
 Z backopacity,%
 Z fontopacity,%
-Z yshift factor,%
-legend Z shift x,%
-legend Z shift y,%
+Z shift x,%
+Z shift y,%
+legend scale,
 CS radio shift x,%
 CS radio shift y,%
 Lan label color,%
