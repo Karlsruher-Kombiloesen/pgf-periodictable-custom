@@ -206,7 +206,7 @@ only cells with periods and group numbers plus Z=false,back color scheme,back co
 Z exercise list,exercise list in capitals,exercise list color,exercise list font,%
 d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT precision%
 % KOMBILÖSEN
-,Z backopacity, Z fontopacity%
+,Z backopacity, Z fontopacity, Z yshift factor%
 }%
 \tikzset{/pgfPerTable/.cd,legend box,legend pins,extra legend,background}%
 }%
@@ -511,7 +511,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \pgfPTZfont\pgfPTnumberfont\pgfmathparse{width("\pgfPT@printnum{\Z}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
             \fi%
             \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
-            at ([xshift=\pgfPT@data@Z@x+.5*\@pgfPT@Zxshift,yshift=-\pgfPT@data@Z@y-.5*\@pgfPT@Zyshift]\Z) {%
+            at ([xshift=\pgfPT@data@Z@x+.5*\@pgfPT@Zxshift,yshift=-\pgfPT@data@Z@y-\pgfPTZyshiftfactor*\@pgfPT@Zyshift]\Z) {%
                     \ifpgfPT@zhnumbers@Z%
                         \ifnum\@pgfPT@resizebox=1\relax%
                         \vbox to\pgfPT@data@Z@ht{\vfil\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{\Z}}\vfil}%

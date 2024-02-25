@@ -342,13 +342,16 @@ Z backopacity/.store in=\pgfPTZbackopacity,%
 Z backopacity/.default=0,%
 Z fontopacity/.get=\pgfPTZfontopacity,%
 Z fontopacity/.store in=\pgfPTZfontopacity,%
-Z fontopacity/.default=1%
+Z fontopacity/.default=1,%
+Z yshift factor/.get=\pgfPTZyshiftfactor,%
+Z yshift factor/.store in=\pgfPTZyshiftfactor,%
+Z yshift factor/.default=0.5,%
 %
 }
 % setting keys with default values ------------------------------------------------------------------
 \pgfkeys{/pgfPerTable/.cd,Z backcolor,Z color,Z font,Z align,Z padding,Z use box width=false,%
 % KOMBILÖSEN
-Z backopacity,Z fontopacity%
+Z backopacity,Z fontopacity, Z yshift factor%
 %
 }%
 % end !! PGF keys: style for the atomic number box -----------------------------------------------
