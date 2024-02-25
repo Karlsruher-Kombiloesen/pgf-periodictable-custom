@@ -555,7 +555,11 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
             \pgfmathsetlength{\pgfPT@dimb}{.5*\pgfPT@data@name@ht}%
             \node[font=\pgfPTnamefont,text=\pgfPTnamecolor,text width=\pgfPT@data@name@wd,align=\pgfPTnamealign] at%
             ([xshift=\pgfPT@data@name@x,yshift=-\pgfPT@data@name@y]\Z)%
-            {\vbox to \pgfPT@data@name@ht{\vfil\vbox to \pgfPT@dimb{\vfil\pgfPT@box@smash{\pgfPT@tmp@name@defaultLanguage}}\vfil}};%
+            %%% KOMBILÖSEN Better vertical alignment of the name
+            {\vbox to \pgfPT@data@name@ht{\vfil\vbox to \pgfPT@dimb{\pgfPT@box@smash{%
+                \parbox[c]{\pgfPTcellwd}{\centering\hspace{0pt}\pgfPT@tmp@name@defaultLanguage}%
+            }}}};%
+            %%%%
             \else% more languages
             \pgfmathsetlength{\pgfPT@boxht}{.333*\pgfPT@data@name@ht}%
             \node[font=\pgfPTnamefont,text=\pgfPTnamecolor,text width=\pgfPT@data@name@wd,align=\pgfPTnamealign] (theName) at%
