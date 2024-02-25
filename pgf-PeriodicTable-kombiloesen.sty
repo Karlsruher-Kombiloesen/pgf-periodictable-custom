@@ -218,6 +218,7 @@ legend scale, %
 legend back opacity,%
 legend font opacity,%
 legend acronym font, %
+legend acronym font size, %
 legend pin font, %
 legend pin sep x,%
 legend pin sep y,%
@@ -1297,8 +1298,8 @@ Act label color,%
 \fi%
 % legend -->
 \ifpgfPTlegenda%
-%%% KOMBILOESEN wrap in node for scaling
-\node[scale=\pgfPTlegendScale] at ([yshift=-0.2*\pgfPTcellht,xshift=0.5*\pgfPTcellwd]0) (L) {\tikz{%
+%%% KOMBILÖSEN wrap in node for scaling,
+\node[scale=\pgfPTlegendScale,anchor=south west] (L) at ([yshift=-0.25*\pgfPTcellht]22 |- 12) {\tikz{%
 %%%
 \pgfPT@countb=0\relax\@for\pgfPT@tmp:=\pgfPTlanguages\do{\advance\pgfPT@countb by 1\relax}%
 \ifpgfPTlegacro% use acronyms ##############################################
@@ -1701,7 +1702,7 @@ Act label color,%
             {\pgfPT@theacro};%
     \fi%
     % acronyms description
-    \fontsize{\pgfPT@doc@fsize}{\pgfPT@doc@fsize}\selectfont%
+    \fontsize{\pgfPT@doc@fsize}{\pgfPT@doc@fsize}\pgfPTlegendacronymfontsize\selectfont%
     \ifnum\pgfPT@countb=2\relax\pgfmathsetlength{\pgfPT@dima}{.4*\f@size}\pgfmathsetlength{\pgfPT@dimb}{.3*\f@size}%
             \else\ifnum\pgfPT@countb>2\relax\pgfmathsetlength{\pgfPT@dima}{.3*\f@size}\pgfmathsetlength{\pgfPT@dimb}{.2*\f@size}%
             \else\pgfmathsetlength{\pgfPT@dima}{.45*\f@size}\fi\fi%
@@ -2509,7 +2510,7 @@ Act label color,%
     \fi%
     \global\pgfPT@dima=0pt\relax%
 \fi\fi% end legend
-%%% KOMBILOESEN Close node for scaling
+%%% KOMBILÖSEN Close node for scaling
 }};
 %%%
 
