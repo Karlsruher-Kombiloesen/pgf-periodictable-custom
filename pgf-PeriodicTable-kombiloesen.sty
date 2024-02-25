@@ -219,6 +219,11 @@ legend back opacity,%
 legend font opacity,%
 legend acronym font, %
 legend pin font, %
+legend pin sep x,%
+legend pin sep y,%
+legend pin line width,%
+legend pin line color,%
+legend pin fill color,%
 CS radio shift x,%
 CS radio shift y,%
 Lan label color,%
@@ -1318,12 +1323,16 @@ Act label color,%
         \ifpgfPTlegendapins%
         \pgfmathsetlength{\pgfPT@dimc}{\pgfPT@data@CS@x+\pgfPT@data@CS@wd}%
         \ifdim\pgfPT@dimc<\pgfPTcellwd\pgfmathsetlength{\pgfPT@dimc}{\pgfPTcellwd-\pgfPT@dimc}\else\pgfmathsetlength{\pgfPT@dimc}{0pt}\fi%
-        \draw[fill=black!30,line width=.05pt,draw=black!50] (LCS.east) circle(.05*\pgfPTcellwd) ++(.05*\pgfPTcellwd,0) -- ++(\pgfPT@dimc+.35*\pgfPTcellwd,0);
+        \draw[fill=\pgfPTlegendpinfillcolor,line width=\pgfPTlegendpinlinewidth,draw=\pgfPTlegendpinlinecolor] (LCS.east) circle(.05*\pgfPTcellwd) ++(.05*\pgfPTcellwd,0) -- ++(\pgfPT@dimc+.35*\pgfPTcellwd,0);
         \pgfPTCSfont\selectfont\ifnum\pgfPT@countb>1\relax\pgfmathsetlength{\pgfPT@dima}{.35*\f@size}\pgfmathsetlength{\pgfPT@dimb}{.25*\f@size}
         \else\pgfmathsetlength{\pgfPT@dima}{.4*\f@size}\fi%
-        \fontsize{\pgfPT@doc@fsize}{\pgfPT@doc@fsize}\pgfPTlegendpinfont\selectfont\relax%
+        \fontsize{\pgfPT@doc@fsize}{\pgfPT@doc@fsize}\selectfont\relax%
         \node[legendpins,%
-                text width={.7*\pgfPTcellwd+.2*(\pgfPT@countb-1)*\pgfPTcellwd-4pt},font=\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,inner xsep=2pt,inner ysep=1pt]%
+                align=left,
+                font=\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\pgfPTlegendpinfont\selectfont,
+                inner xsep=\pgfPTlegendpinsepX,
+                inner ysep=\pgfPTlegendpinsepX]%
+                (LPBox)
                 at ([xshift={\pgfPT@dimc+.2*\pgfPTcellwd},yshift={.25*\pgfPT@data@CS@ht}]LCS.east)%
                 {%
                 \pgfPT@extract@rgb@fill{solido}\pgfPT@pinEstado{solido}%
@@ -1699,15 +1708,20 @@ Act label color,%
     %%% KOMBILÖSEN Description placement
     \def\pgfPTLegendAcrDescShiftY{-\pgfPTcellht-.3*\pgfPT@doc@fsize}%
     \def\pgfPTLegendAcrDescShiftX{0}%
+    \def\pgfPTLegendAcrDescPos{0}%
+    \def\pgfPTLegendAcrDescAnchor{north west}%
     \ifpgfPTLegendAcronymDescPlacementRight%
-        \def\pgfPTLegendAcrDescShiftY{0}%
-        \def\pgfPTLegendAcrDescShiftX{\pgfPTcellwd+3em}% TODO Adjust for pin placement
-    \fi
+        \def\pgfPTLegendAcrDescShiftY{-\pgfPTcellht}%
+        \def\pgfPTLegendAcrDescShiftX{1em}%
+        \def\pgfPTLegendAcrDescPos{LPBox.east |- 0}%
+        \def\pgfPTLegendAcrDescAnchor{south west}%
+    \fi%
     %%%
     \node[below right,text width={2.5*\pgfPTcellwd+.3*(\pgfPT@countb-1)*\pgfPTcellwd-4pt},inner sep=2pt,%
              font=\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,%
+             anchor=\pgfPTLegendAcrDescAnchor,
              fill=\pgfPTlegendbackcolor,fill opacity=\pgfPTlegendbackopacity,text opacity=\pgfPTlegendfontopacity,line width=\pgfPTcelllinewd] (legend) %
-        at ([xshift=\pgfPTLegendAcrDescShiftX,yshift=\pgfPTLegendAcrDescShiftY]0)%
+        at ([xshift=\pgfPTLegendAcrDescShiftX,yshift=\pgfPTLegendAcrDescShiftY]\pgfPTLegendAcrDescPos)%
         {%
         \edef\pgfPTCScolor{\pgfPTlegendCScolor}\edef\pgfPTradiocolor{\pgfPTlegendradiocolor}\edef\pgfPTArstarcolor{\pgfPTArcolor}%
         \ifx\pgfPTlegendZcolor\@empty\relax\edef\pgfPTZcolor{\pgfPTZback}\else\edef\pgfPTZcolor{\pgfPTlegendZcolor}\fi%
