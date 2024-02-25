@@ -1282,7 +1282,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
     % append the Z box
     \ifpgfPT@Z%
         \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,below right,inner sep=1.5pt] (LZ)%
-            at ([xshift=\pgfPT@data@Z@x,yshift=-\pgfPT@data@Z@y]0) {Z};%
+            at ([xshift=\pgfPT@data@Z@x,yshift=-\pgfPT@data@Z@y,xshift=\pgfPTlegendZshiftX,yshift=\pgfPTlegendZshiftY]0) {Z};%
     \fi%
     % the Chemical Symbol
     \ifpgfPT@CS%
