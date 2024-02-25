@@ -1377,11 +1377,11 @@ Act label color,%
     \pgfPTotherLangFont\selectfont%
     \pgfmathsetlength{\pgfPT@dima}{.85*\f@size}%
     \node[text width=\pgfPT@data@radio@wd,text centered,inner sep=0pt,opacity=.25] (Lradio)%
-    at ([xshift=\pgfPT@data@radio@x,yshift=-\pgfPT@data@radio@y]0)
+    at ([xshift=\pgfPT@data@radio@x,yshift=-\pgfPT@data@radio@y,xshift=\pgfPTradioshiftX,yshift=\pgfPTradioshiftY]0)
     {\includegraphics[height=\pgfPT@data@radio@ht]{pgfPT_radio_symbol.pdf}};
     \node[text width=\pgfPT@data@radio@wd,text centered,inner sep=0pt,font=\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,%
              text depth=0pt,minimum height=\pgfPT@data@radio@ht,text=\pgfPTlegendradiocolor]%
-        at ([xshift=\pgfPT@data@radio@x,yshift=-\pgfPT@data@radio@y]0) {Ra};
+        at ([xshift=\pgfPT@data@radio@x,yshift=-\pgfPT@data@radio@y,xshift=\pgfPTradioshiftX,yshift=\pgfPTradioshiftY]0) {Ra};
     \ifnum\pgfPT@fontspec=1\relax\setmainfont{\pgfPTglobalfont}\else\fontfamily{\pgfPTglobalfont}\selectfont\fi\fontseries{\seriesdefault}\fontshape{\shapedefault}%
     \fi%
     % R -> Atomic Radius (Empirycal)
