@@ -578,7 +578,7 @@ Act label color,%
             ([xshift=\pgfPT@data@name@x,yshift=-\pgfPT@data@name@y]\Z)%
             %%% KOMBILÖSEN Better vertical alignment of the name
             {\vbox to \pgfPT@data@name@ht{\vfil\vbox to \pgfPT@dimb{\pgfPT@box@smash{%
-                \parbox[c]{\pgfPTcellwd}{\centering\hspace{0pt}\pgfPT@tmp@name@defaultLanguage}%
+                \parbox[c]{\dimexpr\pgfPTcellwd-\pgfPTcelllinewd\relax}{\centering\hspace{0pt}\pgfPT@tmp@name@defaultLanguage}%
             }}}};%
             %%%%
             \else% more languages

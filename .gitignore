@@ -16,6 +16,9 @@ __pycache__/
 .texpadtmp/
 .venv
 
+PSE.pdf
+PSE.tex
+
 ### Vim ###
 # Swap
 [._]*.s[a-v][a-z]
