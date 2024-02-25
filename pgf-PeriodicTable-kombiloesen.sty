@@ -463,7 +463,23 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
     \ifpgfPTis@backcolorsolid\relax\else\pgfPT@processbackcolor{\Z}\fi%
     \pgfPT@getdata{\Z}%
     % drawing the cell
-    \draw[fill=cpgfPTTMP,line width=\pgfPTcelllinewd,draw=\pgfPTcelllinecolor] (\Z) rectangle ++(\pgfPTcellwd,-\pgfPTcellht);
+    %%%% KOMBILÖSEN Custom cell background on diagonals
+    \def\drawbg{\draw[fill=cpgfPTTMP,line width=\pgfPTcelllinewd,draw=\pgfPTcelllinecolor] (\Z) rectangle ++(\pgfPTcellwd,-\pgfPTcellht);}
+    \ifpgfPTis@backcolorsolid\drawbg\relax\else%
+        \pgfmathparse{\Z==32||\Z==34||\Z==51||\Z==84||\Z==85 ? int(1):int(0)}
+        \ifnum\pgfmathresult>0\relax
+            \ifnum\Z=84\relax\pgfPT@processbackcolor{52}\fi
+            \fill[fill=cpgfPTTMP,yshift=-\pgfPTcellht] (\Z) ++(0,0) -- ++(\pgfPTcellwd,0) -- ++(0,-\pgfPTcellht) -- cycle;
+            \pgfmathparse{\Z-1}
+            \pgfPT@processbackcolor{\pgfmathresult}
+            \ifnum\Z=84\relax\pgfPT@processbackcolor{84}\fi
+            \ifnum\Z=85\relax\pgfPT@processbackcolor{52}\fi
+            \fill[fill=cpgfPTTMP] (\Z) ++(0,0) -- ++(0,-\pgfPTcellht) -- ++(\pgfPTcellwd,0) -- cycle;
+            \draw[line width=\pgfPTcelllinewd,draw=\pgfPTcelllinecolor] (\Z) rectangle ++(\pgfPTcellwd,-\pgfPTcellht);
+        \else\drawbg\fi%
+    \fi%
+    %%%%
+
     % append the Z box
     \ifpgfPT@Z%
         \ifpgfZuseboxwidth{\pgfPTZfont\pgfPTnumberfont%
