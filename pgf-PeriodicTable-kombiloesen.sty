@@ -209,13 +209,16 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
 \tikzset{/pgfPerTable/.cd,legend box,legend pins,extra legend,background}%
 %%% KOMBILÖSEN
 \tikzset{/pgfPerTable/.cd,%
+legend acronym placement right,%
 Z backopacity,%
 Z fontopacity,%
 Z shift x,%
 Z shift y,%
-legend scale,
+legend scale, %
 legend back opacity,%
 legend font opacity,%
+legend acronym font, %
+legend pin font, %
 CS radio shift x,%
 CS radio shift y,%
 Lan label color,%
@@ -1318,7 +1321,7 @@ Act label color,%
         \draw[fill=black!30,line width=.05pt,draw=black!50] (LCS.east) circle(.05*\pgfPTcellwd) ++(.05*\pgfPTcellwd,0) -- ++(\pgfPT@dimc+.35*\pgfPTcellwd,0);
         \pgfPTCSfont\selectfont\ifnum\pgfPT@countb>1\relax\pgfmathsetlength{\pgfPT@dima}{.35*\f@size}\pgfmathsetlength{\pgfPT@dimb}{.25*\f@size}
         \else\pgfmathsetlength{\pgfPT@dima}{.4*\f@size}\fi%
-        \fontsize{\pgfPT@doc@fsize}{\pgfPT@doc@fsize}\selectfont\relax%
+        \fontsize{\pgfPT@doc@fsize}{\pgfPT@doc@fsize}\pgfPTlegendpinfont\selectfont\relax%
         \node[legendpins,%
                 text width={.7*\pgfPTcellwd+.2*(\pgfPT@countb-1)*\pgfPTcellwd-4pt},font=\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,inner xsep=2pt,inner ysep=1pt]%
                 at ([xshift={\pgfPT@dimc+.2*\pgfPTcellwd},yshift={.25*\pgfPT@data@CS@ht}]LCS.east)%
@@ -1693,17 +1696,26 @@ Act label color,%
     \ifnum\pgfPT@countb=2\relax\pgfmathsetlength{\pgfPT@dima}{.4*\f@size}\pgfmathsetlength{\pgfPT@dimb}{.3*\f@size}%
             \else\ifnum\pgfPT@countb>2\relax\pgfmathsetlength{\pgfPT@dima}{.3*\f@size}\pgfmathsetlength{\pgfPT@dimb}{.2*\f@size}%
             \else\pgfmathsetlength{\pgfPT@dima}{.45*\f@size}\fi\fi%
+    %%% KOMBILÖSEN Description placement
+    \def\pgfPTLegendAcrDescShiftY{-\pgfPTcellht-.3*\pgfPT@doc@fsize}%
+    \def\pgfPTLegendAcrDescShiftX{0}%
+    \ifpgfPTLegendAcronymDescPlacementRight%
+        \def\pgfPTLegendAcrDescShiftY{0}%
+        \def\pgfPTLegendAcrDescShiftX{\pgfPTcellwd+3em}% TODO Adjust for pin placement
+    \fi
+    %%%
     \node[below right,text width={2.5*\pgfPTcellwd+.3*(\pgfPT@countb-1)*\pgfPTcellwd-4pt},inner sep=2pt,%
              font=\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,%
              fill=\pgfPTlegendbackcolor,fill opacity=\pgfPTlegendbackopacity,text opacity=\pgfPTlegendfontopacity,line width=\pgfPTcelllinewd] (legend) %
-        at ([yshift={-\pgfPTcellht-.3*\pgfPT@doc@fsize}]0)%
+        at ([xshift=\pgfPTLegendAcrDescShiftX,yshift=\pgfPTLegendAcrDescShiftY]0)%
         {%
         \edef\pgfPTCScolor{\pgfPTlegendCScolor}\edef\pgfPTradiocolor{\pgfPTlegendradiocolor}\edef\pgfPTArstarcolor{\pgfPTArcolor}%
         \ifx\pgfPTlegendZcolor\@empty\relax\edef\pgfPTZcolor{\pgfPTZback}\else\edef\pgfPTZcolor{\pgfPTlegendZcolor}\fi%
         \@for\pgfPT@tmp:=\pgfPT@legend@content\do{%
             \tikz{\node[text={\csname pgfPT\pgfPT@tmp color\endcsname},text depth=0pt,
-                               font=\csname pgfPT\pgfPT@tmp font\endcsname\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont] %
-              {\pgfPT@setacro[\pgfPTlanguages]{\pgfPT@tmp}\pgfPT@theacro%
+                        font=\fontfamily{\pgfPTglobalfont}\selectfont\csname pgfPT\pgfPT@tmp font\endcsname\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\normalfont\pgfPTlegendacronymfont\selectfont] %
+            {\pgfPT@setacro[\pgfPTlanguages]{\pgfPT@tmp}%
+                \makebox(0,1.1em){}\makebox[1em][r]{\pgfPT@theacro}%
                 \edef\pgfPT@test@tmp{\pgfPT@tmp}%
                 \ifpgfPT@TboilC\ifpgfPT@Tboil\edef\pgfPT@test@TboilC{TboilC}\ifx\pgfPT@test@tmp\pgfPT@test@TboilC\hspace{.15ex}C\fi\fi\fi%
                 \ifpgfPT@Tboil\ifpgfPT@TboilC\edef\pgfPT@test@Tboil{Tboil}\ifx\pgfPT@test@tmp\pgfPT@test@Tboil\hspace{.15ex}K\fi\fi\fi%

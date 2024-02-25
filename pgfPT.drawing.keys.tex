@@ -1616,9 +1616,10 @@ dark mode/.style={back color scheme=solid,back color=black!80,cell line color=bl
 }% end \pgfPT@latstyle
 %
 % end .code macros -----------------------------------------------------------------------------
-
+\newif\ifpgfPTLegendAcronymDescPlacementRight%
 % KOMBILÖSEN Styles
 \pgfkeys{/pgfPerTable/.cd,%
+legend acronym placement right/.is if=pgfPTLegendAcronymDescPlacementRight,%
 Z backopacity/.get=\pgfPTZbackopacity,%
 Z backopacity/.store in=\pgfPTZbackopacity,%
 Z backopacity/.default=1,%
@@ -1640,6 +1641,12 @@ legend back opacity/.default=1,%
 legend font opacity/.get=\pgfPTlegendfontopacity,%
 legend font opacity/.store in=\pgfPTlegendfontopacity,%
 legend font opacity/.default=1,%
+legend acronym font/.get=\pgfPTlegendacronymfont,%
+legend acronym font/.store in=\pgfPTlegendacronymfont,%
+legend acronym font/.default=\empty,%
+legend pin font/.get=\pgfPTlegendpinfont,%
+legend pin font/.store in=\pgfPTlegendpinfont,%
+legend pin font/.default=\empty,%
 CS radio shift x/.get=\pgfPTradioshiftX,%
 CS radio shift x/.store in=\pgfPTradioshiftX,%
 CS radio shift x/.default=0,%
@@ -1654,6 +1661,7 @@ Act label color/.store in=\pgfPTActLabelColor,%
 Act label color/.default=cpgfPTTMP,%
 }
 \pgfkeys{/pgfPerTable/.cd,%
+legend acronym placement right,%
 Z backopacity,%
 Z fontopacity,%
 Z shift x,%
@@ -1661,6 +1669,8 @@ Z shift y,%
 legend scale,
 legend back opacity,
 legend font opacity,
+legend acronym font,
+legend pin font,
 CS radio shift x,%
 CS radio shift y,%
 Lan label color,%
