@@ -214,6 +214,8 @@ Z fontopacity,%
 Z shift x,%
 Z shift y,%
 legend scale,
+legend back opacity,%
+legend font opacity,%
 CS radio shift x,%
 CS radio shift y,%
 Lan label color,%
@@ -1693,7 +1695,7 @@ Act label color,%
             \else\pgfmathsetlength{\pgfPT@dima}{.45*\f@size}\fi\fi%
     \node[below right,text width={2.5*\pgfPTcellwd+.3*(\pgfPT@countb-1)*\pgfPTcellwd-4pt},inner sep=2pt,%
              font=\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,%
-             fill=\pgfPTlegendbackcolor,line width=\pgfPTcelllinewd] (legend) %
+             fill=\pgfPTlegendbackcolor,fill opacity=\pgfPTlegendbackopacity,text opacity=\pgfPTlegendfontopacity,line width=\pgfPTcelllinewd] (legend) %
         at ([yshift={-\pgfPTcellht-.3*\pgfPT@doc@fsize}]0)%
         {%
         \edef\pgfPTCScolor{\pgfPTlegendCScolor}\edef\pgfPTradiocolor{\pgfPTlegendradiocolor}\edef\pgfPTArstarcolor{\pgfPTArcolor}%

@@ -1621,7 +1621,7 @@ dark mode/.style={back color scheme=solid,back color=black!80,cell line color=bl
 \pgfkeys{/pgfPerTable/.cd,%
 Z backopacity/.get=\pgfPTZbackopacity,%
 Z backopacity/.store in=\pgfPTZbackopacity,%
-Z backopacity/.default=0,%
+Z backopacity/.default=1,%
 Z fontopacity/.get=\pgfPTZfontopacity,%
 Z fontopacity/.store in=\pgfPTZfontopacity,%
 Z fontopacity/.default=1,%
@@ -1634,6 +1634,12 @@ Z shift y/.default=-0.5,%
 legend scale/.get=\pgfPTlegendScale,%
 legend scale/.store in=\pgfPTlegendScale,%
 legend scale/.default=1,%
+legend back opacity/.get=\pgfPTlegendbackopacity,%
+legend back opacity/.store in=\pgfPTlegendbackopacity,%
+legend back opacity/.default=1,%
+legend font opacity/.get=\pgfPTlegendfontopacity,%
+legend font opacity/.store in=\pgfPTlegendfontopacity,%
+legend font opacity/.default=1,%
 CS radio shift x/.get=\pgfPTradioshiftX,%
 CS radio shift x/.store in=\pgfPTradioshiftX,%
 CS radio shift x/.default=0,%
@@ -1653,6 +1659,8 @@ Z fontopacity,%
 Z shift x,%
 Z shift y,%
 legend scale,
+legend back opacity,
+legend font opacity,
 CS radio shift x,%
 CS radio shift y,%
 Lan label color,%
