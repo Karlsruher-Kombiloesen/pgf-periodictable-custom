@@ -206,7 +206,7 @@ only cells with periods and group numbers plus Z=false,back color scheme,back co
 Z exercise list,exercise list in capitals,exercise list color,exercise list font,%
 d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT precision%
 % KOMBILÖSEN
-,Z backopacity, Z fontopacity, Z yshift factor, CS radio shift x, CS radio shift y%
+,Z backopacity, Z fontopacity, Z yshift factor, CS radio shift x, CS radio shift y, Lan label color, Act label color,%
 }%
 \tikzset{/pgfPerTable/.cd,legend box,legend pins,extra legend,background}%
 }%
@@ -1112,7 +1112,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
             {\pgfPTlabfont\pgfPTnumberfont\ifpgfPT@zhnumbers@per\let\pgfPT@printnum\zhnumber\else\let\pgfPT@printnum\relax\fi%
             \node[left,font=\pgfPTlabfont,text=\pgfPTlabpercolor] at ([xshift=\pgfPT@perlabel@xshift,yshift=\pgfPT@CS@yshift]\Z) {\pgfPT@printnum{6}};}%
             \ifpgfPTLaAclabels\pgfPT@processbackcolor{57}%
-            \node[below left,font=\pgfPTlabLaAcfont,text=cpgfPTTMP,inner ysep=0pt,text width=\pgfPT@labelboxwd] at ([xshift=\pgfPT@perlabel@xshift]\Z)%
+            \node[below left,font=\pgfPTlabLaAcfont,text=\pgfPTLanLabelColor,inner ysep=0pt,text width=\pgfPT@labelboxwd] at ([xshift=\pgfPT@perlabel@xshift]\Z)%
                     {\pgfPT@tmp@label@defaultLanguage\ifnum\pgfPT@counta>1\relax\fontsize{\pgfPT@dima}{\pgfPT@dima}\selectfont\\ [-1pt]\pgfPT@tmp@labels@otherLanguages\fi};\fi%
             \breakforeach\fi%
         }%
@@ -1139,7 +1139,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 {\pgfPTlabfont\pgfPTnumberfont\ifpgfPT@zhnumbers@per\let\pgfPT@printnum\zhnumber\else\let\pgfPT@printnum\relax\fi%
                 \node[left,font=\pgfPTlabfont,text=\pgfPTlabpercolor] at ([xshift=\pgfPT@perlabel@xshift,yshift=\pgfPT@CS@yshift]\Z) {\pgfPT@printnum{6}};}%
                 \ifpgfPTLaAclabels\pgfPT@processbackcolor{57}%
-                    \node[below left,font=\pgfPTlabLaAcfont,text=cpgfPTTMP,inner ysep=0pt,text width=\pgfPT@labelboxwd] at ([xshift=\pgfPT@perlabel@xshift]\Z)%
+                    \node[below left,font=\pgfPTlabLaAcfont,text=\pgfPTLanLabelColor,inner ysep=0pt,text width=\pgfPT@labelboxwd] at ([xshift=\pgfPT@perlabel@xshift]\Z)%
                     {\pgfPT@tmp@label@defaultLanguage\ifnum\pgfPT@counta>1\relax\fontsize{\pgfPT@dima}{\pgfPT@dima}\selectfont\\ [-1pt]\pgfPT@tmp@labels@otherLanguages\fi};\fi%
                 \breakforeach\fi%
         }%
@@ -1171,7 +1171,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
             {\pgfPTlabfont\pgfPTnumberfont\ifpgfPT@zhnumbers@per\let\pgfPT@printnum\zhnumber\else\let\pgfPT@printnum\relax\fi%
             \node[left,font=\pgfPTlabfont,text=\pgfPTlabpercolor] at ([xshift=\pgfPT@perlabel@xshift,yshift=\pgfPT@CS@yshift]\Z) {\pgfPT@printnum{7}};}%
             \ifpgfPTLaAclabels\pgfPT@processbackcolor{89}%
-            \node[below left,font=\pgfPTlabLaAcfont,text=cpgfPTTMP,inner ysep=0pt,text width=\pgfPT@labelboxwd] at ([xshift=\pgfPT@perlabel@xshift]\Z)%
+            \node[below left,font=\pgfPTlabLaAcfont,text=\pgfPTActLabelColor,inner ysep=0pt,text width=\pgfPT@labelboxwd] at ([xshift=\pgfPT@perlabel@xshift]\Z)%
                     {\pgfPT@tmp@label@defaultLanguage\ifnum\pgfPT@counta>1\relax\fontsize{\pgfPT@dima}{\pgfPT@dima}\selectfont\\ [-1pt]\pgfPT@tmp@labels@otherLanguages\fi};\fi%
         \breakforeach\fi%
         }%
@@ -1198,7 +1198,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 {\pgfPTlabfont\pgfPTnumberfont\ifpgfPT@zhnumbers@per\let\pgfPT@printnum\zhnumber\else\let\pgfPT@printnum\relax\fi%
                 \node[left,font=\pgfPTlabfont,text=\pgfPTlabpercolor] at ([xshift=\pgfPT@perlabel@xshift,yshift=\pgfPT@CS@yshift]\Z) {\pgfPT@printnum{7}};}%
                 \ifpgfPTLaAclabels\pgfPT@processbackcolor{89}%
-                    \node[below left,font=\pgfPTlabLaAcfont,text=cpgfPTTMP,inner ysep=0pt,text width=\pgfPT@labelboxwd] at ([xshift=\pgfPT@perlabel@xshift]\Z)%
+                    \node[below left,font=\pgfPTlabLaAcfont,text=\pgfPTActLabelColor,inner ysep=0pt,text width=\pgfPT@labelboxwd] at ([xshift=\pgfPT@perlabel@xshift]\Z)%
                     {\pgfPT@tmp@label@defaultLanguage\ifnum\pgfPT@counta>1\relax\fontsize{\pgfPT@dima}{\pgfPT@dima}\selectfont\\ [-1pt]\pgfPT@tmp@labels@otherLanguages\fi};\fi%
                 \breakforeach\fi%
         }%

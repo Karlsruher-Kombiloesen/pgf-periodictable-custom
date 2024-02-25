@@ -1634,7 +1634,21 @@ CS radio shift x/.default=0,%
 CS radio shift y/.get=\pgfPTradioshiftY,%
 CS radio shift y/.store in=\pgfPTradioshiftY,%
 CS radio shift y/.default=0,%
+Lan label color/.get=\pgfPTLanLabelColor,%
+Lan label color/.store in=\pgfPTLanLabelColor,%
+Lan label color/.default=cpgfPTTMP,%
+Act label color/.get=\pgfPTActLabelColor,%
+Act label color/.store in=\pgfPTActLabelColor,%
+Act label color/.default=cpgfPTTMP,%
 }
-\pgfkeys{/pgfPerTable/.cd, Z backopacity, Z fontopacity, Z yshift factor, CS radio shift x, CS radio shift y}%
+\pgfkeys{/pgfPerTable/.cd,%
+Z backopacity,%
+Z fontopacity,%
+Z yshift factor,%
+CS radio shift x,%
+CS radio shift y,%
+Lan label color,%
+Act label color,%
+}%
 
 \endinput
