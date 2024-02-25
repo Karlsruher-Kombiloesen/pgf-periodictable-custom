@@ -206,7 +206,7 @@ only cells with periods and group numbers plus Z=false,back color scheme,back co
 Z exercise list,exercise list in capitals,exercise list color,exercise list font,%
 d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT precision%
 % KOMBILÖSEN
-,Z backopacity, Z fontopacity, Z yshift factor%
+,Z backopacity, Z fontopacity, Z yshift factor, CS radio shift x, CS radio shift y%
 }%
 \tikzset{/pgfPerTable/.cd,legend box,legend pins,extra legend,background}%
 }%
@@ -602,7 +602,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
     \fi%
     % radioactivity
     \ifpgfPT@radio\relax\ifnum\pgfPT@data@radio=1\relax%
-        \node[text width=\pgfPT@data@radio@wd,text centered] at ([xshift=\pgfPT@data@radio@x,yshift=-\pgfPT@data@radio@y]\Z)%
+        \node[text width=\pgfPT@data@radio@wd,text centered] at ([xshift=\pgfPT@data@radio@x,yshift=-\pgfPT@data@radio@y,xshift=\pgfPTradioshiftX,yshift=\pgfPTradioshiftY]\Z)%
         {\vbox to\pgfPT@data@radio@ht{\vfil\usebox{\pgfPT@radiobox}\vfil}};%
     \fi\fi%
     \ifpgfPT@eConfign\relax%

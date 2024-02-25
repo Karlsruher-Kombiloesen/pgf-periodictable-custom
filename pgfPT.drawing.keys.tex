@@ -335,25 +335,9 @@ Z use box width/.is if=pgfZuseboxwidth,%
 Z box/.style={Z use box width=true},%
 Z/.code=\pgfPT@Zstyle{#1},%
 Z/.default={bc=black,c=white,f=\tiny\bfseries,boxwd=false,align=left,pad=.25ex}%
-% KOMBILÖSEN
-,%
-Z backopacity/.get=\pgfPTZbackopacity,%
-Z backopacity/.store in=\pgfPTZbackopacity,%
-Z backopacity/.default=0,%
-Z fontopacity/.get=\pgfPTZfontopacity,%
-Z fontopacity/.store in=\pgfPTZfontopacity,%
-Z fontopacity/.default=1,%
-Z yshift factor/.get=\pgfPTZyshiftfactor,%
-Z yshift factor/.store in=\pgfPTZyshiftfactor,%
-Z yshift factor/.default=0.5,%
-%
 }
 % setting keys with default values ------------------------------------------------------------------
-\pgfkeys{/pgfPerTable/.cd,Z backcolor,Z color,Z font,Z align,Z padding,Z use box width=false,%
-% KOMBILÖSEN
-Z backopacity,Z fontopacity, Z yshift factor%
-%
-}%
+\pgfkeys{/pgfPerTable/.cd,Z backcolor,Z color,Z font,Z align,Z padding,Z use box width=false}%
 % end !! PGF keys: style for the atomic number box -----------------------------------------------
 %
 % setting the style for the name of the element ----------------------------------------------------
@@ -1632,4 +1616,25 @@ dark mode/.style={back color scheme=solid,back color=black!80,cell line color=bl
 }% end \pgfPT@latstyle
 %
 % end .code macros -----------------------------------------------------------------------------
+
+% KOMBILÖSEN Styles
+\pgfkeys{/pgfPerTable/.cd,%
+Z backopacity/.get=\pgfPTZbackopacity,%
+Z backopacity/.store in=\pgfPTZbackopacity,%
+Z backopacity/.default=0,%
+Z fontopacity/.get=\pgfPTZfontopacity,%
+Z fontopacity/.store in=\pgfPTZfontopacity,%
+Z fontopacity/.default=1,%
+Z yshift factor/.get=\pgfPTZyshiftfactor,%
+Z yshift factor/.store in=\pgfPTZyshiftfactor,%
+Z yshift factor/.default=0.5,%
+CS radio shift x/.get=\pgfPTradioshiftX,%
+CS radio shift x/.store in=\pgfPTradioshiftX,%
+CS radio shift x/.default=0,%
+CS radio shift y/.get=\pgfPTradioshiftY,%
+CS radio shift y/.store in=\pgfPTradioshiftY,%
+CS radio shift y/.default=0,%
+}
+\pgfkeys{/pgfPerTable/.cd, Z backopacity, Z fontopacity, Z yshift factor, CS radio shift x, CS radio shift y}%
+
 \endinput
