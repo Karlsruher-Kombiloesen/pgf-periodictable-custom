@@ -2,7 +2,7 @@
 % --------------------------------------------------------------------------------------------------
 % subfile of pgf-PeriodicTable package ----------------------------------------------------------
 % --------------------------------------------------------------------------------------------------
-% «The keys for the layout and drawing the Periodic Table» ------------------------------------
+% ï¿½The keys for the layout and drawing the Periodic Tableï¿½ ------------------------------------
 % --------------------------------------------------------------------------------------------------
 \pgfkeys{/pgfPerTable/.cd,%
 languages/.code=\pgfPT@otherlanguages{#1},% v2.1.0
@@ -122,7 +122,7 @@ title/.default={f=\Large\bfseries,c=black}%
 \pgfkeys{/pgfPerTable/.cd,show title,show period numbers,show group numbers,show legend,legend acronyms,legend back color,%
 show legend pins,show extra legend,legend radio color,legend CS color,legend Z color,show blocks=false,show families=false,%
 show MNM line,show periodic variations=false,show label LaAc,title font,title color}%
-% «mixed styles»
+% ï¿½mixed stylesï¿½
 \pgfkeys{/pgfPerTable/.cd,legend box/.code=\pgfPT@legendbox#1\relax,legend box/.default={left color=black!20,right color=black!10,draw=black!30}}%
 \def\pgfPT@legendbox#1\relax{\relax\pgfkeys{/tikz/.cd,legendbox/.style={#1}}}%
 \pgfkeys{/pgfPerTable/.cd,legend box}%
@@ -203,7 +203,7 @@ per+gr/.default={pc=red!50!black,gc=blue!50!black,f=\small\bfseries}%
 % end !! PGF keys: labels of periods and groups ------------------------------------------------
 %
 % defining PGF keys: the cells of the periodic table to be drawn -------------------------------
-% list names available to use in key 'Z list', e.g. «Z list=spd» or «Z list=G1» -----------------
+% list names available to use in key 'Z list', e.g. ï¿½Z list=spdï¿½ or ï¿½Z list=G1ï¿½ -----------------
 \def\pgfPT@cells@all{1,...,118}%
 \def\pgfPT@cells@spd{1,...,57,72,73,...,89,104,105,...,118}%
 \def\pgfPT@cells@spdwLaAc{1,...,56,72,73,...,88,104,105,...,118}%
@@ -335,9 +335,22 @@ Z use box width/.is if=pgfZuseboxwidth,%
 Z box/.style={Z use box width=true},%
 Z/.code=\pgfPT@Zstyle{#1},%
 Z/.default={bc=black,c=white,f=\tiny\bfseries,boxwd=false,align=left,pad=.25ex}%
+% KOMBILÃ–SEN
+,%
+Z backopacity/.get=\pgfPTZbackopacity,%
+Z backopacity/.store in=\pgfPTZbackopacity,%
+Z backopacity/.default=0,%
+Z fontopacity/.get=\pgfPTZfontopacity,%
+Z fontopacity/.store in=\pgfPTZfontopacity,%
+Z fontopacity/.default=1%
+%
 }
 % setting keys with default values ------------------------------------------------------------------
-\pgfkeys{/pgfPerTable/.cd,Z backcolor,Z color,Z font,Z align,Z padding,Z use box width=false}%
+\pgfkeys{/pgfPerTable/.cd,Z backcolor,Z color,Z font,Z align,Z padding,Z use box width=false,%
+% KOMBILÃ–SEN
+Z backopacity,Z fontopacity%
+%
+}%
 % end !! PGF keys: style for the atomic number box -----------------------------------------------
 %
 % setting the style for the name of the element ----------------------------------------------------

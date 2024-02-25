@@ -1,4 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KombilÃ¶sen @ 27/02/2024
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hugo Gomes @ 14/02/2024 v2.1.0
 % Hugo Gomes @ 29/05/2023 v2.0.1
 % Hugo Gomes @ 20/02/2023 v2.0.0
@@ -6,7 +8,7 @@
 % Hugo Gomes @ 10/10/2022 v1.0.0
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesPackage{pgf-PeriodicTable}[14/02/2024 pgf-PeriodicTable v2.1.0]%%
+\ProvidesPackage{pgf-PeriodicTable-kombiloesen}[27/02/2024 pgf-PeriodicTable-KombilÃ¶sen based on v2.1.0]%%
 \RequirePackage{tikz}%
 \usetikzlibrary{fadings}%
 \tikzfading[name=aumentax, left color=transparent!80, right color=transparent!1]%
@@ -203,6 +205,8 @@ only cells=false,only cells plus Z=false,only cells with periods and group numbe
 only cells with periods and group numbers plus Z=false,back color scheme,back color,%
 Z exercise list,exercise list in capitals,exercise list color,exercise list font,%
 d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT precision%
+% KOMBILÃ–SEN
+,Z backopacity, Z fontopacity%
 }%
 \tikzset{/pgfPerTable/.cd,legend box,legend pins,extra legend,background}%
 }%
@@ -222,7 +226,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
 \edef\pgfPT@defaultfont{phv}%
 \ifx\pgfPTglobalfont\pgfPT@defaultfont\relax\edef\pgfPTglobalfont{TeX Gyre Heros}\fi% replacing 'phv' by 'TeX Gyre Heros'
 \setmainfont{\pgfPTglobalfont}%
-\ifx\NoAutoSpacing\undefined\relax\else\NoAutoSpacing\fi% XeLaTeX/LuaLaTeX -> removing «extra space» before ':' for babel:french
+\ifx\NoAutoSpacing\undefined\relax\else\NoAutoSpacing\fi% XeLaTeX/LuaLaTeX -> removing ï¿½extra spaceï¿½ before ':' for babel:french
 \else% fontenc is loaded (with T1 option)
 \fontfamily{\pgfPTglobalfont}\selectfont\renewcommand*\rmdefault{\pgfPTglobalfont}\fi%
 \edef\pgfPT@doc@fsize{\f@size}%
@@ -321,14 +325,14 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \pgfmathparse{width("\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                 \ifdim\pgfPT@data@Z@natwd>\pgfPT@data@Z@wd\relax%
                     \pgfmathparse{\pgfPT@data@Z@wd-2*\pgfPTZspace-.3333em}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
-                    \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                    \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
                         at (xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}}\hspace{\pgfPTZspace}\vfil}};%
                 \else%
-                    \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
-                        at (xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}\hspace{\pgfPTZspace}\vfil}};%
+                    \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                        at ([yshift=-2]xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}\hspace{\pgfPTZspace}\vfil}};%
                 \fi%
             \else\let\pgfPT@printnum\relax%
-                \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
                     at (xLa) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{57--71}\hspace{\pgfPTZspace}\vfil}};%
             \fi%
             }%
@@ -340,7 +344,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \else\let\pgfPT@printnum\relax%
                     \pgfPTZfont\pgfPTnumberfont\pgfmathparse{width("\pgfPT@printnum{57}\ --\ \pgfPT@printnum{71}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                 \fi%
-                \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
+                \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
                 at (xLa) {%
                     \ifpgfPT@zhnumbers@Z%
                         \ifnum\@pgfPT@resizebox=1\relax%
@@ -392,14 +396,14 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \pgfmathparse{width("\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                 \ifdim\pgfPT@data@Z@natwd>\pgfPT@data@Z@wd\relax%
                     \pgfmathparse{\pgfPT@data@Z@wd-2*\pgfPTZspace-.3333em}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
-                    \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                    \node[\kkZBoxOptions,fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
                         at (xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}}\hspace{\pgfPTZspace}\vfil}};%
                 \else%
-                    \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                    \node[\kkZBoxOptions,fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
                         at (xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}\hspace{\pgfPTZspace}\vfil}};%
                 \fi%
             \else\let\pgfPT@printnum\relax%
-                \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                \node[\kkZBoxOptions,fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
                     at (xAc) {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{89--103}\hspace{\pgfPTZspace}\vfil}};%
             \fi%
             }%
@@ -411,7 +415,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \else\let\pgfPT@printnum\relax%
                     \pgfPTZfont\pgfPTnumberfont\pgfmathparse{width("\pgfPT@printnum{89}\ --\ \pgfPT@printnum{103}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                 \fi%
-                \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
+                \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
                 at (xAc) {%
                     \ifpgfPT@zhnumbers@Z%
                         \ifnum\@pgfPT@resizebox=1\relax%
@@ -467,16 +471,16 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 \pgfmathparse{width("\pgfPT@printnum{\Z}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
                 \ifdim\pgfPT@data@Z@natwd>\pgfPT@data@Z@wd\relax%
                     \pgfmathparse{\pgfPT@data@Z@wd-2*\pgfPTZspace-.3333em}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
-                    \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                    \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
                         at ([xshift=.5*\pgfPT@data@Z@x,yshift=-.5*\pgfPT@data@Z@y]\Z)
                         {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\resizebox{\pgfPT@data@Z@natwd}{\height}{\pgfPT@printnum{\Z}}\hspace{\pgfPTZspace}\vfil}};
                 \else%
-                    \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                    \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
                         at ([xshift=.5*\pgfPT@data@Z@x,yshift=-.5*\pgfPT@data@Z@y]\Z)
                         {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{\Z}\hspace{\pgfPTZspace}\vfil}};
                 \fi%
             \else\let\pgfPT@printnum\relax%
-                \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
+                \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,align=\pgfPTZalign,text width=\pgfPT@data@Z@wd]%
                     at ([xshift=.5*\pgfPT@data@Z@x,yshift=-.5*\pgfPT@data@Z@y]\Z)
                     {\vbox to\pgfPT@data@Z@ht{\vfil\hspace{\pgfPTZspace}\pgfPT@printnum{\Z}\hspace{\pgfPTZspace}\vfil}};
             \fi%
@@ -490,7 +494,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
             \else\let\pgfPT@printnum\relax%
                 \pgfPTZfont\pgfPTnumberfont\pgfmathparse{width("\pgfPT@printnum{\Z}")}\pgfmathsetlength{\pgfPT@data@Z@natwd}{\pgfmathresult}%
             \fi%
-            \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
+            \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,text width=\pgfPT@data@Z@natwd,inner xsep=.5ex]%
             at ([xshift=\pgfPT@data@Z@x+.5*\@pgfPT@Zxshift,yshift=-\pgfPT@data@Z@y-.5*\@pgfPT@Zyshift]\Z) {%
                     \ifpgfPT@zhnumbers@Z%
                         \ifnum\@pgfPT@resizebox=1\relax%
@@ -853,7 +857,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                 };%
             \fi\fi%
     \fi%
-    % Cp -> Specific heat capacity (25ºC, 100kPa)
+    % Cp -> Specific heat capacity (25ï¿½C, 100kPa)
     \ifpgfPT@Cp\relax%
             \ifnum\pgfPTCpprecision<0\relax%
                 \node[font=\pgfPTCpfont,text=\pgfPTCpcolor,text width=\pgfPT@data@Cp@wd,text centered]%
@@ -866,7 +870,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
                     at ([xshift=\pgfPT@data@Cp@x,yshift=-\pgfPT@data@Cp@y]\Z) {\vbox to\pgfPT@data@Cp@ht{\vfil\pgfPT@formatnumber{\pgfPTCpprecision}{\pgfPT@data@Cp}\vfil}};%
             \fi\fi%
     \fi%
-    % kT -> Thermal Condutivity (25ºC)
+    % kT -> Thermal Condutivity (25ï¿½C)
     \ifpgfPT@kT\relax%
             \ifnum\pgfPTkTprecision<0\relax%
                 \node[font=\pgfPTkTfont,text=\pgfPTkTcolor,text width=\pgfPT@data@kT@wd,text centered]%
@@ -1257,7 +1261,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
 \draw[fill=\pgfPTlegendbackcolor,draw=\pgfPTcelllinecolor,line width=\pgfPTcelllinewd] (0) rectangle ++(\pgfPTcellwd,-\pgfPTcellht);
     % append the Z box
     \ifpgfPT@Z%
-        \node[fill=\pgfPTZback,font=\pgfPTZfont,text=\pgfPTZcolor,below right,inner sep=1.5pt] (LZ)%
+        \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont,text=\pgfPTZcolor,below right,inner sep=1.5pt] (LZ)%
             at ([xshift=\pgfPT@data@Z@x,yshift=-\pgfPT@data@Z@y]0) {Z};%
     \fi%
     % the Chemical Symbol
@@ -1458,14 +1462,14 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
             at ([xshift=\pgfPT@data@d@x,yshift=-\pgfPT@data@d@y]0)%
             {d};%
     \fi%
-    % Cp -> Specific heat capacity (25ºC, 100kPa)
+    % Cp -> Specific heat capacity (25ï¿½C, 100kPa)
     \ifpgfPT@Cp%
         \node[font=\pgfPTCpfont,text=\pgfPTCpcolor,text width=\pgfPT@data@Cp@wd,text centered,inner xsep=0pt,%
                   text depth=0pt,minimum height=\pgfPT@data@Cp@ht]%
             at ([xshift=\pgfPT@data@Cp@x,yshift=-\pgfPT@data@Cp@y]0)%
             {Cp};%
     \fi%
-    % kT -> Thermal Condutivity (25ºC)
+    % kT -> Thermal Condutivity (25ï¿½C)
     \ifpgfPT@kT%
         \node[font=\pgfPTkTfont,text=\pgfPTkTcolor,text width=\pgfPT@data@kT@wd,text centered,inner xsep=0pt,%
                   text depth=0pt,minimum height=\pgfPT@data@kT@ht]%
@@ -1707,7 +1711,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
 \fontsize{\pgfPT@doc@fsize}{\pgfPT@doc@fsize}\selectfont\relax%
 \draw[fill=\pgfPTlegendbackcolor] (0) rectangle ++({\pgfPT@legendscaleX*\pgfPTcellwd},-\pgfPT@legendscaleY*\pgfPTcellht);
     \ifpgfPT@Z\pgfPTZfont\selectfont\pgfmathsetlength{\pgfPT@dima}{1.5*\pgfPT@loadcell@scaleX*\f@size}%
-        \node[fill=\pgfPTZback,font=\pgfPTZfont\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,text=\pgfPTZcolor,below right,inner sep=1.5pt] (LZ)%
+        \node[fill=\pgfPTZback,fill opacity=\pgfPTZbackopacity,text opacity=\pgfPTZfontopacity,font=\pgfPTZfont\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,text=\pgfPTZcolor,below right,inner sep=1.5pt] (LZ)%
             at ([xshift=\pgfPT@legendscaleX*\pgfPT@data@Z@x,yshift=-\pgfPT@legendscaleY*\pgfPT@data@Z@y]0) {Z};%
         \ifnum\pgfPT@countb=2\relax\pgfmathsetlength{\pgfPT@dima}{.5*\f@size*\pgfPT@txtscale}\pgfmathsetlength{\pgfPT@dimb}{.4*\f@size*\pgfPT@txtscale}%
             \else\ifnum\pgfPT@countb>2\relax\pgfmathsetlength{\pgfPT@dima}{.4*\f@size*\pgfPT@txtscale}\pgfmathsetlength{\pgfPT@dimb}{.3*\f@size*\pgfPT@txtscale}%
@@ -2075,7 +2079,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
             };
         \ifnum\pgfPT@fontspec=1\relax\setmainfont{\pgfPTglobalfont}\else\fontfamily{\pgfPTglobalfont}\selectfont\fi\fontseries{\seriesdefault}\fontshape{\shapedefault}%
     \fi%
-    % Cp -> Specific heat capacity (25ºC, 100kPa)
+    % Cp -> Specific heat capacity (25ï¿½C, 100kPa)
     \ifpgfPT@Cp%
         \pgfPTCpfont\selectfont\advance\pgfPT@count@note by1\relax%
             \ifnum\pgfPT@countb=2\relax\pgfmathsetlength{\pgfPT@dima}{.7*\f@size*\pgfPT@txtscale}\pgfmathsetlength{\pgfPT@dimb}{.55*\f@size*\pgfPT@txtscale}%
@@ -2090,7 +2094,7 @@ d unit,d precision,E precision,ls unit,ls precision,T precision,Cp precision,kT 
             };
         \ifnum\pgfPT@fontspec=1\relax\setmainfont{\pgfPTglobalfont}\else\fontfamily{\pgfPTglobalfont}\selectfont\fi\fontseries{\seriesdefault}\fontshape{\shapedefault}%
     \fi%
-    % kT -> Thermal Condutivity (25ºC)
+    % kT -> Thermal Condutivity (25ï¿½C)
     \ifpgfPT@kT%
         \pgfPTkTfont\selectfont\advance\pgfPT@count@note by1\relax%
             \ifnum\pgfPT@countb=2\relax\pgfmathsetlength{\pgfPT@dima}{.7*\f@size*\pgfPT@txtscale}\pgfmathsetlength{\pgfPT@dimb}{.55*\f@size*\pgfPT@txtscale}%
@@ -3071,12 +3075,12 @@ rectangle
 %                                 \pgfPT@set@rgb@fill ----------------------------------------------------
 % auxiliary macros to set the rgb components of one color ---------------------------------------
 % with use of \extractcolorspecs from xcolor package ---------------------------------------------
-% each component is stored in \pgfPT@«r, g or b» & «s or f» -------------------------------------
+% each component is stored in \pgfPT@ï¿½r, g or bï¿½ & ï¿½s or fï¿½ -------------------------------------
 \def\pgfPT@extract@rgb@stroke#1{\extractcolorspecs{#1}{\pgfPTcolmodel}{\pgfPTcolinfo}\expandafter\pgfPT@set@rgb@stroke\pgfPTcolinfo\relax}%
 \def\pgfPT@set@rgb@stroke#1,#2,#3\relax{\def\pgfPT@rs{#1}\def\pgfPT@gs{#2}\def\pgfPT@bs{#3}}%
 \def\pgfPT@extract@rgb@fill#1{\extractcolorspecs{#1}{\pgfPTcolmodel}{\pgfPTcolinfo}\expandafter\pgfPT@set@rgb@fill\pgfPTcolinfo\relax}%
 \def\pgfPT@set@rgb@fill#1,#2,#3\relax{\def\pgfPT@rf{#1}\def\pgfPT@gf{#2}\def\pgfPT@bf{#3}}%
-% END !! \pgfPT@«color macros» ------------------------------------------------------------------
+% END !! \pgfPT@ï¿½color macrosï¿½ ------------------------------------------------------------------
 %
 % #########################################################
 % built-in cell styles
