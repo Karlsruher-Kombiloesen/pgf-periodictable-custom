@@ -122,9 +122,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % process user language
 \ifpgfPT@user@lang%
-\input{translations/pgfPT.lang.\pggPT@userlanguage@ISOcode.tex}%
+\input{translations/kk_pgfPT.lang.\pggPT@userlanguage@ISOcode.tex}%
 \else%
-\input{translations/pgfPT.lang.undefined.tex}%
+\input{translations/kk_pgfPT.lang.undefined.tex}%
 \fi%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcount\pgfPT@counta\newcount\pgfPT@countb%
@@ -169,15 +169,15 @@
 \pgfsetlayers{\@pgfPT@layers}%
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{pgfPT.buildcell.tex}% Loading cell building macros
-\input{pgfPT.formatNumbers.tex}% Loading number formatting
-\input{pgfPT.drawing.keys.tex}% Loading keys for the Periodic Table Layout
-\input{pgfPT.backcolors.keys.tex}% Loading keys for the Periodic Table colors
-\input{pgfPT.data.tex}% Loading the data of the elements in the Periodic Table
-\input{pgfPT.names.tex}% Loading the names of the elements in the Periodic Table
-\input{pgfPT.labels.tex}% Loading language labels
-\input{pgfPT.process.language.tex}% Macros for process language labels
-\input{pgfPT.input.library.tex}% Loading the input library mechanism (new v2.0.0)
+\input{kk_pgfPT.buildcell.tex}% Loading cell building macros
+\input{kk_pgfPT.formatNumbers.tex}% Loading number formatting
+\input{kk_pgfPT.drawing.keys.tex}% Loading keys for the Periodic Table Layout
+\input{kk_pgfPT.backcolors.keys.tex}% Loading keys for the Periodic Table colors
+\input{kk_pgfPT.data.tex}% Loading the data of the elements in the Periodic Table
+\input{kk_pgfPT.names.tex}% Loading the names of the elements in the Periodic Table
+\input{kk_pgfPT.labels.tex}% Loading language labels
+\input{kk_pgfPT.process.language.tex}% Macros for process language labels
+\input{kk_pgfPT.input.library.tex}% Loading the input library mechanism (new v2.0.0)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % --------------------------------------------------------------------------------------------------
 % commands #################################################
@@ -252,7 +252,7 @@ Act label color,%
 \else% fontenc is loaded (with T1 option)
 \fontfamily{\pgfPTglobalfont}\selectfont\renewcommand*\rmdefault{\pgfPTglobalfont}\fi%
 \edef\pgfPT@doc@fsize{\f@size}%
-\input{pgfPT.coordinates.tex}%
+\input{kk_pgfPT.coordinates.tex}%
 % loading the cell style
 \pgfPT@loadcell[\pgfPTcellstyle]%
 \ifx\pgfPTZexlist\@empty\relax%
@@ -318,7 +318,7 @@ Act label color,%
 \pgfmathparse{.5*\pgfPTcellwd}\edef\pgfPT@@xshift{\pgfmathresult}% ??? ELIMINAR buildcell
 \pgfmathparse{-.5*\pgfPTcellht}\edef\pgfPT@CS@yshift{\pgfmathresult}% ELIMINAR buildcell
 \ifpgfPT@radio\pgfmathsetlength{\pgfPT@dima}{.9*\pgfPT@data@radio@ht}\fi%
-\savebox{\pgfPT@radiobox}{\includegraphics[height=\pgfPT@dima]{pgfPT_radio_symbol.pdf}}
+\savebox{\pgfPT@radiobox}{\includegraphics[height=\pgfPT@dima]{kk_pgfPT_radio_symbol.pdf}}
 % computing and defining the font size for standard atomic weight ----->
 \ifpgfPT@Arstar\pgfPTArfont\selectfont\pgfmathsetlength{\pgfPT@dimb}{.825*\f@size}\relax\fi%
 % drawing the cells of lanthanides and actinides  ----->
@@ -1393,7 +1393,7 @@ Act label color,%
     \pgfmathsetlength{\pgfPT@dima}{.85*\f@size}%
     \node[text width=\pgfPT@data@radio@wd,text centered,inner sep=0pt,opacity=.25] (Lradio)%
     at ([xshift=\pgfPT@data@radio@x,yshift=-\pgfPT@data@radio@y,xshift=\pgfPTradioshiftX,yshift=\pgfPTradioshiftY]0)
-    {\includegraphics[height=\pgfPT@data@radio@ht]{pgfPT_radio_symbol.pdf}};
+    {\includegraphics[height=\pgfPT@data@radio@ht]{kk_pgfPT_radio_symbol.pdf}};
     \node[text width=\pgfPT@data@radio@wd,text centered,inner sep=0pt,font=\fontsize{\the\pgfPT@dima}{\the\pgfPT@dima}\selectfont,%
              text depth=0pt,minimum height=\pgfPT@data@radio@ht,text=\pgfPTlegendradiocolor]%
         at ([xshift=\pgfPT@data@radio@x,yshift=-\pgfPT@data@radio@y,xshift=\pgfPTradioshiftX,yshift=\pgfPTradioshiftY]0) {Ra};
@@ -1895,7 +1895,7 @@ Act label color,%
     \pgfmathsetlength{\pgfPT@dima}{\pgfPT@data@radio@ht*\pgfPT@loadcell@scaleY}%
     \node[text width={\pgfPT@legendscaleX*\pgfPT@data@radio@wd-2pt},text centered,inner sep=1pt,opacity=.6] (Lradio)%
     at ([xshift=\pgfPT@legendscaleX*\pgfPT@data@radio@x,yshift=-\pgfPT@legendscaleY*\pgfPT@data@radio@y]0)
-    {\includegraphics[height=\pgfPT@dima]{pgfPT_radio_symbol.pdf}};
+    {\includegraphics[height=\pgfPT@dima]{kk_pgfPT_radio_symbol.pdf}};
     % pin it...
         \ifpgfPTlegendapins%
         \pgfPTotherLangFont\selectfont%
