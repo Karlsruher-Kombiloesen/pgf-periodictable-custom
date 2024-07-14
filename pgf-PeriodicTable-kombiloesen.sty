@@ -492,7 +492,7 @@ Act label color,%
         \ifnum\pgfmathresult>0\relax
             \ifnum\Z=84\relax\pgfPT@processbackcolor{52}\fi
             \fill[fill=cpgfPTTMP,yshift=-\pgfPTcellht] (\Z) ++(0,0) -- ++(\pgfPTcellwd,0) -- ++(0,-\pgfPTcellht) -- cycle;
-            \pgfmathparse{\Z-1}
+            \pgfmathtruncatemacro{\pgfmathresult}{\Z-1}
             \pgfPT@processbackcolor{\pgfmathresult}
             \ifnum\Z=84\relax\pgfPT@processbackcolor{84}\fi
             \ifnum\Z=85\relax\pgfPT@processbackcolor{52}\fi
@@ -3056,7 +3056,7 @@ rectangle
 \fi% \pgfPT@element@count=118
 \fi\fi% min=1 & max 118
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\@pgfPT@resetlayers% Restoring pgf layers to those used in the document
+\pgfsetlayers{\@pgfPT@resetlayers}% Restoring pgf layers to those used in the document
 \fontseries{\seriesdefault}\fontshape{\shapedefault}\fontfamily{\familydefault}\selectfont% Restoring the font settings to normal mode in the document
 }% end tikz
 }%
