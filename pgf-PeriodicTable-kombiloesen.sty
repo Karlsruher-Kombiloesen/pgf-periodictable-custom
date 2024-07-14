@@ -578,9 +578,16 @@ Act label color,%
             \node[font=\pgfPTnamefont,text=\pgfPTnamecolor,text width=\pgfPT@data@name@wd,align=\pgfPTnamealign] at%
             ([xshift=\pgfPT@data@name@x,yshift=-\pgfPT@data@name@y]\Z)%
             %%% KOMBILÖSEN Better vertical alignment of the name
-            {\vbox to \pgfPT@data@name@ht{\vfil\vbox to \pgfPT@dimb{\pgfPT@box@smash{%
-                \parbox[c]{\dimexpr\pgfPTcellwd-\pgfPTcelllinewd\relax}{\centering\hspace{0pt}\pgfPT@tmp@name@defaultLanguage}%
-            }}}};%
+            {%
+                \vbox to \pgfPT@data@name@ht{%
+                    \vfil\vbox to \pgfPT@dimb{%
+                        \pgfPT@box@smash{%
+                            \parbox[c]{\dimexpr\pgfPTcellwd-\pgfPTcelllinewd\relax}{\centering\hspace{0pt}\pgfPT@tmp@name@defaultLanguage}%
+                        }%
+                        \vfil%
+                    }%
+                }%
+            };%
             %%%%
             \else% more languages
             \pgfmathsetlength{\pgfPT@boxht}{.333*\pgfPT@data@name@ht}%
